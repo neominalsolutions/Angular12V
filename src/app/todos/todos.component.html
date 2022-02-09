@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row">
+    <div class="input-group mb-3">
+      <!-- two-way model binding -->
+      <!-- FormsModule import etmemiz gerekiyor two -way model binding kullanabilmek için -->
+      <!-- <input
+        #inpt
+        [(ngModel)]="editItem.title"
+        type="text"
+        class="form-control"
+        placeholder="Todo"
+        aria-label="Username"
+        aria-describedby="basic-addon1"
+      /> -->
+
+      <input
+        #inpt
+        type="text"
+        class="d-block form-control"
+        placeholder="Todo"
+        aria-label="Username"
+        aria-describedby="basic-addon1"
+      />
+      <div class="input-group-prepend">
+        <button
+          [hidden]="!editMode"
+          class="btn btn-info"
+          (click)="update(inpt)"
+        >
+          Güncelle
+        </button>
+        <button
+          [disabled]="editMode"
+          class="btn btn-secondary"
+          (click)="add(inpt)"
+        >
+          Ekle
+        </button>
+      </div>
+
+      <br />
+    </div>
+    <div class="mb-3">
+      <input
+        #inptSearch
+        (input)="search(inptSearch.value)"
+        type="text"
+        class="d-block form-control"
+        placeholder="Search"
+        aria-label="Username"
+        aria-describedby="basic-addon1"
+      />
+    </div>
+  </div>
+  <div class="row">
+    <ul class="list-group" *ngFor="let todo of filteredData">
+      <li class="list-group-item d-flex justify-content-between">
+        <div>{{ todo.title }} {{ todo.completed | todoPipe }}</div>
+
+        <div>
+          <button class="btn btn-primary" (click)="edit(todo.id, inpt)">
+            Düzenle
+          </button>
+          <button class="btn btn-close m-2" (click)="delete(todo.id)"></button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
