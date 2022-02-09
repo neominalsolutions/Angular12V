@@ -6,6 +6,7 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
+import { TodosService } from './todos.service';
 
 export interface Todo {
   id: number;
@@ -20,21 +21,29 @@ export interface Todo {
   styleUrls: ['./todos.component.css'],
 })
 export class TodosComponent implements OnInit {
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private httpClient: HttpClient,
+    private todoService: TodosService
+  ) {}
 
   data: Todo[] = [];
   filteredData: Todo[] = [];
 
   ngOnInit(): void {
     // promise Then burada subscribe karşılık gelir.
-    this.httpClient
-      .get<Todo[]>('https://jsonplaceholder.typicode.com/todos')
-      .subscribe((res) => {
-        this.data = res;
-        this.filteredData = this.data;
+    // this.httpClient
+    //   .get<Todo[]>('https://jsonplaceholder.typicode.com/todos')
+    //   .subscribe((res) => {
+    //     this.data = res;
+    //     this.filteredData = this.data;
 
-        console.log('data', this.data);
-      });
+    //     console.log('data', this.data);
+    //   });
+
+    this.todoService.getTodos().subscribe((res) => {
+      this.data = res;
+      this.filteredData = this.data;
+    });
   }
 
   editMode: boolean = false;
@@ -92,6 +101,11 @@ export class TodosComponent implements OnInit {
     this.filteredData = this.data.filter((x) =>
       x.title.toLocaleLowerCase().includes(searchText.toLocaleLowerCase())
     );
+  }
+
+  cancel(inpt: HTMLInputElement) {
+    this.editMode = !this.editMode;
+    inpt.value = '';
   }
 
   private SetFilteredTodos() {

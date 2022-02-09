@@ -36,6 +36,13 @@
         >
           Ekle
         </button>
+        <button
+          [hidden]="!editMode"
+          class="btn btn-danger"
+          (click)="cancel(inpt)"
+        >
+          İptal Et
+        </button>
       </div>
 
       <br />
@@ -54,10 +61,35 @@
   </div>
   <div class="row">
     <ul class="list-group" *ngFor="let todo of filteredData">
-      <li class="list-group-item d-flex justify-content-between">
-        <div>{{ todo.title }} {{ todo.completed | todoPipe }}</div>
+      <li
+        [ngClass]="todo.completed ? 'bg-light text-danger' : ''"
+        class="list-group-item d-flex justify-content-between"
+      >
+        <div appTodoBold>{{ todo.title }} {{ todo.completed | todoPipe }}</div>
 
-        <div>
+        <div class="d-flex justify-content-between">
+          <div class="form-check form-switch">
+            <input
+              [ngStyle]="
+                (todo.completed && {
+                  zoom: '1.5',
+                  backgroundColor: 'green'
+                }) || {
+                  zoom: '1'
+                }
+              "
+              (change)="todo.completed = !todo.completed"
+              [checked]="todo.completed"
+              class="form-check-input"
+              type="checkbox"
+              role="switch"
+              id="flexSwitchCheckDefault"
+            />
+            <label
+              class="form-check-label"
+              for="flexSwitchCheckDefault"
+            ></label>
+          </div>
           <button class="btn btn-primary" (click)="edit(todo.id, inpt)">
             Düzenle
           </button>

@@ -9,9 +9,13 @@ import { TodosComponent } from './todos/todos.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { TodoPipe } from './todos/todo.pipe';
+import { TodosService } from './todos/todos.service';
+import { TodoBoldDirective } from './todos/todo-bold.directive';
 
+// not: angularda declarations kısmında directive,pipe ve component tanımlıyoruz.
+// provider kısmında ise service tanımlaması yapıyoruz
 @NgModule({
-  declarations: [AppComponent, TodosComponent, TodoPipe],
+  declarations: [AppComponent, TodosComponent, TodoPipe, TodoBoldDirective],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -20,7 +24,7 @@ import { TodoPipe } from './todos/todo.pipe';
     HttpClientModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [TodosService], // providers kısmında ise servislerimiz olacaktır.
   bootstrap: [AppComponent],
 })
 export class AppModule {}
