@@ -1,5 +1,6 @@
+import { HomeComponent } from './pages/home/home.component';
 import { TodosComponent } from './todos/todos.component';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 // router module angularda sayfalar arası link geçişleri yapmamızı sağlar
@@ -9,6 +10,10 @@ const routes: Routes = [
   {
     component: TodosComponent,
     path: 'todos',
+  },
+  {
+    component: HomeComponent,
+    path: '',
   },
 ];
 

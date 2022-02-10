@@ -12,11 +12,12 @@ import { TodoPipe } from './todos/todo.pipe';
 import { TodosService } from './todos/todos.service';
 import { TodoBoldDirective } from './todos/todo-bold.directive';
 import { ComponentsModule } from './components/components.module';
+import { HomeComponent } from './pages/home/home.component';
 
 // not: angularda declarations kısmında directive,pipe ve component tanımlıyoruz.
 // provider kısmında ise service tanımlaması yapıyoruz
 @NgModule({
-  declarations: [AppComponent, TodosComponent, TodoPipe, TodoBoldDirective],
+  declarations: [AppComponent, TodosComponent, TodoPipe, TodoBoldDirective, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
