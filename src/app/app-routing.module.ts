@@ -1,10 +1,19 @@
+import { TodosComponent } from './todos/todos.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+// router module angularda sayfalar arası link geçişleri yapmamızı sağlar
+//  Routes ile hangi path url hangi component gelecek belirtiriz.
+
+const routes: Routes = [
+  {
+    component: TodosComponent,
+    path: 'todos',
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

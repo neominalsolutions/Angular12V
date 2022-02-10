@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { TodoPipe } from './todos/todo.pipe';
 import { TodosService } from './todos/todos.service';
 import { TodoBoldDirective } from './todos/todo-bold.directive';
+import { ComponentsModule } from './components/components.module';
 
 // not: angularda declarations kısmında directive,pipe ve component tanımlıyoruz.
 // provider kısmında ise service tanımlaması yapıyoruz
@@ -23,6 +24,7 @@ import { TodoBoldDirective } from './todos/todo-bold.directive';
     AlertModule.forRoot(),
     HttpClientModule,
     FormsModule,
+    ComponentsModule, // Ana AppModule Kendi modüllerimizi import ederiz
   ],
   providers: [TodosService], // providers kısmında ise servislerimiz olacaktır.
   bootstrap: [AppComponent],

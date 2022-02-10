@@ -1,2 +1,15 @@
+<my-button
+  [btnClass]="'blue-button'"
+  [btnName]="'mybutton'"
+  (clicked)="btnClick($event)"
+></my-button>
+
+<my-button
+  [btnClass]="'red-button'"
+  [btnName]="'mybutton2'"
+  (clicked)="btnClick($event)"
+></my-button>
+
 <app-todos></app-todos>
+
 <router-outlet></router-outlet>
