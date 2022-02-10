@@ -1,0 +1,7 @@
+<select (change)="onDropdownChanged($event)">
+  <option *ngFor="let item of items" [value]="item.value">
+    {{ item.text }}
+  </option>
+</select>
+
+<!-- $event js event döndürür -->

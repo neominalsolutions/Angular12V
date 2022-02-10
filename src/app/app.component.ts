@@ -11,4 +11,8 @@ export class AppComponent {
   btnClick(message: string) {
     alert(message);
   }
+
+  showSelect(value: string) {
+    alert('seçilen : ' + value);
+  }
 }

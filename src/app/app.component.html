@@ -1,4 +1,4 @@
-<my-button
+<!-- <my-button
   [btnClass]="'blue-button'"
   [btnName]="'mybutton'"
   (clicked)="btnClick($event)"
@@ -10,6 +10,25 @@
   (clicked)="btnClick($event)"
 ></my-button>
 
-<app-todos></app-todos>
+<my-dropdown
+  (changed)="showSelect($event)"
+  [items]="[
+    { text: 'izmir', value: 35 },
+    { text: 'istanbul', value: 34 }
+  ]"
+></my-dropdown> -->
 
-<router-outlet></router-outlet>
+<!-- // cities = ['key':'izmir',value:'34']
+<my-selector items="cities" (selected)="select($event)"></my-selector>
+
+// selectorden birşey seçince seçinlen şehir alert ile gösterelim -->
+
+<!-- <app-todos></app-todos> -->
+
+<!-- <a routerLink="todos">Todos Page</a> -->
+
+<!-- router outlet ile render body yapıyoruz -->
+
+<!-- <router-outlet></router-outlet> -->
+
+<app-layout></app-layout>
